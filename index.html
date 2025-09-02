@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Nurse Professional Skills Portfolio</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--muted:#6b7280;--accent:#0ea5a4;--accent-2:#06b6d4;--text:#0f172a;--soft:#eef2f7;--shadow:0 8px 20px rgba(2,6,23,.08);--radius:14px;--gap:16px}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;background:linear-gradient(180deg,var(--bg),#eef2f7);color:var(--text);padding:18px}
+    .container{max-width:1100px;margin:20px auto}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:46px;height:46px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800}
+    h1{margin:0;font-size:26px}
+    .sub{color:var(--muted);font-size:14px}
+    .btn{background:var(--accent);color:white;padding:8px 12px;border-radius:999px;border:0;cursor:pointer;font-weight:700}
+
+    .grid{display:grid;grid-template-columns:2fr 1fr;gap:var(--gap);margin-top:18px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}}
+
+    .card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .hero{display:flex;gap:16px;align-items:center}
+    .avatar{width:110px;height:110px;border-radius:12px;background:linear-gradient(180deg,#fff,#f1f5f9);display:flex;align-items:center;justify-content:center;font-size:34px;font-weight:800;color:var(--accent)}
+    .meta{display:flex;flex-direction:column;gap:6px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+    .chip{background:var(--soft);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+
+    /* Sections */
+    h2{margin:0 0 8px;font-size:18px}
+    p.small{color:var(--muted);margin:0}
+
+    /* skills */
+    .skills{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width:640px){.skills{grid-template-columns:1fr}}
+    .skill{display:flex;flex-direction:column;gap:6px}
+    .skill .bar{height:10px;background:#e6eef2;border-radius:999px;overflow:hidden}
+    .skill .bar > span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .8s ease}
+    .percent{font-size:12px;color:var(--muted);text-align:right}
+
+    /* timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .event{padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);border:1px solid #e6eef2}
+    .event .role{font-weight:700}
+    .event .when{font-size:12px;color:var(--muted)}
+
+    /* projects */
+    .projects{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:720px){.projects{grid-template-columns:1fr}}
+    .project{padding:12px;border-radius:12px;border:1px solid #e6eef2}
+
+    /* contact */
+    form{display:grid;gap:10px}
+    input,textarea,select{padding:10px;border-radius:10px;border:1px solid #e6eef2}
+    button.submit{background:var(--accent-2);color:white;padding:10px;border-radius:10px;border:0}
+
+    footer{text-align:center;color:var(--muted);margin-top:18px}
+
+    /* print friendly */
+    @media print{body{background:white} .btn{display:none} header, footer{display:none}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">NS</div>
+        <div>
+          <h1>Nurse Professional Skills Portfolio</h1>
+          <div class="sub">Compassionate patient care • Clinical skills • Quality & safety</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn" onclick="window.print()">Export PDF</button>
+        <button class="btn" id="toggleTheme">Toggle Theme</button>
+      </div>
+    </header>
+
+    <main class="grid">
+      <!-- Left column -->
+      <section class="card">
+        <div class="hero">
+          <div class="avatar">Lali</div>
+          <div class="meta">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div>
+                <div style="font-weight:800">Lalitha N — Registered Nurse</div>
+                <div style="font-size:13px;color:var(--muted)">ICU & Medical‑Surgical • Patient Education • Medication Safety</div>
+              </div>
+            </div>
+            <div class="chips">
+              <div class="chip">BLS & ACLS</div>
+              <div class="chip">Wound Care</div>
+              <div class="chip">IV Therapy</div>
+              <div class="chip">Patient Advocacy</div>
+            </div>
+          </div>
+        </div>
+
+        <section style="margin-top:16px">
+          <h2>Professional Summary</h2>
+          <p class="small">Dedicated nurse with 4+ years of clinical experience delivering high‑quality care in fast‑paced hospital settings. Strong background in critical care monitoring, medication administration, care planning, and multidisciplinary collaboration. Passionate about patient education and improving safety outcomes.</p>
+        </section>
+
+        <section style="margin-top:14px">
+          <h2>Core Clinical Skills</h2>
+          <div class="skills" id="skillsList">
+            <div class="skill" data-level="92"><div style="display:flex;justify-content:space-between"><strong>Medication Administration</strong><span class="percent">92%</span></div><div class="bar"><span></span></div></div>
+            <div class="skill" data-level="88"><div style="display:flex;justify-content:space-between"><strong>IV Cannulation & Infusions</strong><span class="percent">88%</span></div><div class="bar"><span></span></div></div>
+            <div class="skill" data-level="85"><div style="display:flex;justify-content:space-between"><strong>Patient Assessment & Monitoring</strong><span class="percent">85%</span></div><div class="bar"><span></span></div></div>
+            <div class="skill" data-level="80"><div style="display:flex;justify-content:space-between"><strong>Wound Care & Dressing</strong><span class="percent">80%</span></div><div class="bar"><span></span></div></div>
+          </div>
+        </section>
+
+        <section style="margin-top:14px">
+          <h2>Experience</h2>
+          <div class="timeline">
+            <div class="event">
+              <div class="role">Senior Staff Nurse — City Hospital</div>
+              <div class="when">2022 – Present</div>
+              <p class="small">Managed a 10‑bed medical ward, performed medication reconciliation, mentored junior nurses, and led a falls‑prevention initiative that reduced incidents by 28%.</p>
+            </div>
+            <div class="event">
+              <div class="role">Staff Nurse — General Hospital</div>
+              <div class="when">2019 – 2022</div>
+              <p class="small">Provided perioperative and post‑op care, managed pain protocols, and participated in patient discharge planning and education.</p>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:14px">
+          <h2>Projects & Initiatives</h2>
+          <div class="projects">
+            <div class="project">
+              <strong>Medication Safety Toolkit</strong>
+              <div class="small">Developed checklists and double‑check processes to reduce med errors; implemented barcode scanning pilot.</div>
+            </div>
+            <div class="project">
+              <strong>Patient Education Leaflets</strong>
+              <div class="small">Created easy‑read discharge leaflets for common conditions; improved readmission literacy scores.</div>
+            </div>
+            <div class="project">
+              <strong>Pressure Ulcer Prevention</strong>
+              <div class="small">Led risk assessments and repositioning schedules; decreased hospital‑acquired pressure injuries.</div>
+            </div>
+            <div class="project">
+              <strong>Mentorship Program</strong>
+              <div class="small">Structured onboarding for new nurses with competency checklists and simulation sessions.</div>
+            </div>
+          </div>
+        </section>
+
+        <section style="margin-top:14px">
+          <h2>Clinical Protocols & Quality</h2>
+          <p class="small">Familiar with SBAR handover, root‑cause analysis, incident reporting, and infection prevention bundles. Experience implementing audit cycles and running small PDSA improvements.</p>
+        </section>
+
+      </section>
+
+      <!-- Right column -->
+      <aside>
+        <div class="card" style="margin-bottom:var(--gap)">
+          <h2>Certifications</h2>
+          <ul style="margin:8px 0 0 18px;color:var(--muted)">
+            <li>Registered Nurse (RN)</li>
+            <li>BLS & ACLS certified</li>
+            <li>IV Cannulation Workshop</li>
+            <li>Wound Care Certification</li>
+          </ul>
+        </div>
+
+        <div class="card" style="margin-bottom:var(--gap)">
+          <h2>Education</h2>
+          <div style="color:var(--muted);margin-top:8px">
+            <div><strong>B.Sc. Nursing</strong> — State University (2016–2019)</div>
+            <div style="font-size:13px;margin-top:6px">Relevant: Critical Care Nursing, Pharmacology, Community Health</div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom:var(--gap)">
+          <h2>Tools & Tech</h2>
+          <div class="chips" style="margin-top:8px;flex-direction:column;align-items:flex-start">
+            <div class="chip">EHR / EMR (basic)</div>
+            <div class="chip">Vital signs monitors</div>
+            <div class="chip">Infusion pumps</div>
+            <div class="chip">Pressure mapping</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Contact</h2>
+          <form id="contactForm">
+            <input id="name" placeholder="Your name" required />
+            <input id="email" type="email" placeholder="you@example.com" required />
+            <select id="service"><option>Clinical collaboration</option><option>Training / workshops</option><option>Audit / QA support</option></select>
+            <textarea id="message" rows="4" placeholder="Message"></textarea>
+            <button type="submit" class="submit">Send Message</button>
+            <div id="status" style="font-size:13px;color:var(--muted);margin-top:8px"></div>
+          </form>
+        </div>
+
+      </aside>
+    </main>
+
+    <footer>
+      <div style="font-size:13px;color:var(--muted)">© <span id="year"></span> Lalitha S • Nurse Portfolio — Built with HTML/CSS/JS</div>
+    </footer>
+  </div>
+
+  <script>
+    // simple theme toggle
+    const body = document.body;
+    const toggle = document.getElementById('toggleTheme');
+    const saved = localStorage.getItem('nurseTheme') || 'light';
+    if(saved==='dark') applyDark();
+    toggle.addEventListener('click', ()=>{
+      const now = localStorage.getItem('nurseTheme')==='dark' ? 'light' : 'dark';
+      localStorage.setItem('nurseTheme', now);
+      now==='dark' ? applyDark() : applyLight();
+    });
+    function applyDark(){document.documentElement.style.setProperty('--bg','#071021');document.documentElement.style.setProperty('--card','#0b1220');document.documentElement.style.setProperty('--text','#e6eef6');document.documentElement.style.setProperty('--muted','#9aa6b2');document.documentElement.style.setProperty('--soft','#0f1724');document.documentElement.style.setProperty('--shadow','0 10px 30px rgba(0,0,0,.5)');}
+    function applyLight(){document.documentElement.style.removeProperty('--bg');document.documentElement.style.removeProperty('--card');document.documentElement.style.removeProperty('--text');document.documentElement.style.removeProperty('--muted');document.documentElement.style.removeProperty('--soft');document.documentElement.style.removeProperty('--shadow');}
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // animate skill bars when visible
+    const skills = document.querySelectorAll('.skill');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting){
+          const level = ent.target.dataset.level || 70;
+          ent.target.querySelector('.bar > span').style.width = level + '%';
+        }
+      })
+    }, {threshold:0.35});
+    skills.forEach(s=>obs.observe(s));
+
+    // contact form simple handler
+    document.getElementById('contactForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const status = document.getElementById('status');
+      if(!name||!email){ status.textContent = 'Please provide name and email.'; return; }
+      status.textContent = 'Message prepared — in a real site this would be sent to email.';
+      // reset
+      e.target.reset();
+      setTimeout(()=> status.textContent = 'Message saved (demo).',1200);
+    });
+  </script>
+</body>
+</html>
